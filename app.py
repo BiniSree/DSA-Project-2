@@ -19,5 +19,6 @@ def prediction():
 
 
 if __name__ == '__main__':
-    app.run(port=15000)
     app.debug = True
+    app.run(port=15000)
+    
