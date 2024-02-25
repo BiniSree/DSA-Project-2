@@ -20,8 +20,11 @@ def prediction():
         df['Style']=[]
         df['month']= []
         print("MY DATAFRAME init : \n",df)
+        #df['Category']= category
+        #df['Style']= style
+        #df['month']= month
         df.loc[0] = [category,style,month]
-        df= df.drop(df.index)
+        #df= df.drop(df.index)
         print("MY DATAFRAME : \n",df)
         print("MY DATAFRAME : \n",df['Category'])
         print("CATEGORY BEFORE ENCODING :", category)
