@@ -51,7 +51,9 @@ def prediction():
         print("SCALED DF IS: ",scaled_df)
         model_mdata_rf = pickle.load(open('model_mdata_rf.pkl','rb'))
         sales_count = model_mdata_rf.predict(scaled_df)
-    return render_template('prediction.html', sales_count = sales_count)
+        scaler_qty= pickle.load(open('scaler_qty.pkl','rb'))
+        monthly_demand = scaler_qty.inverse_transform([sales_count])
+    return render_template('prediction.html', monthly_demand = monthly_demand)
 
 
 if __name__ == '__main__':
