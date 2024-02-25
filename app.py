@@ -45,13 +45,12 @@ def prediction():
         #encoded_style= encoder.fit_transform(df['Style'])
         #encoded_month= encoder.fit_transform(df['month'])
         df.loc[0] = [category,style,month]
-        
         print("The encoded df is : \n", df)
-        model_mdata_rf = pickle.load(open('model_mdata_rf.pkl','rb'))
-        sales_count = model_mdata_rf.predict(df)
         scaler1= pickle.load(open('scaler1.pkl','rb'))
-
-
+        scaled_df= scaler1.transform(df)
+        print("SCALED DF IS: ",scaled_df)
+        model_mdata_rf = pickle.load(open('model_mdata_rf.pkl','rb'))
+        sales_count = model_mdata_rf.predict(scaled_df)
     return render_template('prediction.html', sales_count = sales_count)
 
 
